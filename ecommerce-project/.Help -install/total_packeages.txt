@@ -1,0 +1,9 @@
+npm i
+
+uuidv1
+bodyParser
+cookieParser
+morgan
+express-validator
+mongoose
+express-jwt isonwebtoken
