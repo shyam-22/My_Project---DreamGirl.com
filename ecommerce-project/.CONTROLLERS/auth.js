@@ -3,7 +3,7 @@ const User = require("../.MODULE-Schema/userSchema")
 const jwt = require("jsonwebtoken"); //to generate signed Token
 const expressJwt = require("express-jwt") //for authorization check
 const {errorHandler} = require( "../.Error_Message-DB/dbEroor.js");
-const { user } = require("../.Routes/user");
+const { user } = require("../.Routes/auth");
 
 exports.signup = (req,res) => {
     const user = new User(req.body)
@@ -54,6 +54,22 @@ exports.signout = (req,res) => {
     res.clearCookie("t")
     res.json({message:"User SignOut successfully"})    
 }
+
+//It seems like the newer version of express-jwt requiers algorithms, 
+//so please use the following code to resolve this error:
+
+exports.requireSignin = expressJwt({
+    secret: process.env.JWT_SECRET,
+    algorithms: ["HS256"], // added later
+    userProperty: "auth",
+  });
+
+
+
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@ const expressvalidator = require("express-validator")
 
 
 //Import all your routes here
-const useRoutes = require("./.Routes/user")
+const authRoutes = require("./.Routes/auth")
 
 //app connection with express
 const app = express();
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URL,{
 }).then(() => console.log(`connected to DB`))
 
 //Routes Middleware
-app.use("/api",useRoutes);
+app.use("/api",authRoutes);
 
 
 const port = process.env.PORT || 8000

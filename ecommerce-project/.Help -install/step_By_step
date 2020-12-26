@@ -3,4 +3,8 @@ port connection
 db connection
 
 make 5 folder as ---> Routes.....Schema_Model.....Controllers....validators......Db_Error_messages
-Routes--->signUp,signIN,signOut
+Routes--->signUp,signIN,signOut,requireSignin
+
+Al'right......I will see u in the next lecture....Thank you 
+
+At the moment it looks fine.....but later to get a bit messy again
