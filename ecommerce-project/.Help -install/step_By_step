@@ -1,0 +1,6 @@
+express connection
+port connection
+db connection
+
+make 5 folder as ---> Routes.....Schema_Model.....Controllers....validators......Db_Error_messages
+Routes--->signUp,signIN,signOut

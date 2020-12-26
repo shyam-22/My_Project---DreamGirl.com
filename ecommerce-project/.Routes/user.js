@@ -1,10 +1,15 @@
 const express = require("express")
-const router = express.Router()
+const router = express.Router();
 
-const {signup} = require("../.CONTROLLERS/user.js") 
-const {userSignupValidator} = require("../.VALIDATOR/validator")
+const {signup,signin,signout } = require("../.CONTROLLERS/user") ;
+const {userSignupValidator} = require("../.VALIDATOR/validator");
 
 //create a route method
 router.post("/signup",userSignupValidator, signup);
+router.post("/signin", signin);
+router.get("/signout", signout);
+
+
+
 
 module.exports = router;

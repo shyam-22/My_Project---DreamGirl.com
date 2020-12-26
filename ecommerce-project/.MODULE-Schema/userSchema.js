@@ -28,6 +28,11 @@ userSchema.virtual("password")
 })
 
 userSchema.methods = {
+    //Pretty simple,pretty straight forward
+    authenticate :  function(plainText_Password){
+        return this.encryptPassword(plainText_Password) === this.hashed_password
+    },
+
     encryptPassword: function(password){
         if(!password)
         return ""
