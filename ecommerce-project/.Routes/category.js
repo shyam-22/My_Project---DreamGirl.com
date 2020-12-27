@@ -1,15 +1,19 @@
 const express = require("express")
 const router = express.Router();
 
+const { createCategory } = require("../.CONTROLLERS/category") ;
+
 const {requireSignin,isAuth,isAdmin} = require("../.CONTROLLERS/auth") ;
 const {userById } = require("../.CONTROLLERS/user") ;
 
-router.get("/secret/:userId",requireSignin,isAuth,isAdmin, (req,res) => {
-    res.json({ user : req.profile})
-});
 
-//this time its not going to give out GET/POST anything like that
+
+//create a route method
+router.post("/category/create/:userId",requireSignin,isAuth,isAdmin, createCategory);
+
 router.param("userId",userById)
+
+
 
 
 
