@@ -8,9 +8,10 @@ const expressvalidator = require("express-validator")
 
 
 //Import all your routes here
-const authRoutes = require("./.Routes/auth")
-const userRoutes = require("./.Routes/user")
-const categoryRoutes = require("./.Routes/category")
+const authRoutes = require("./.Routes/auth");
+const userRoutes = require("./.Routes/user");
+const categoryRoutes = require("./.Routes/category");
+const productRoutes = require("./.Routes/product");
 
 
 
@@ -34,6 +35,7 @@ mongoose.connect(process.env.MONGO_URL,{
 app.use("/api",authRoutes);
 app.use("/api",userRoutes);
 app.use("/api",categoryRoutes);
+app.use("/api",productRoutes);
 
 
 
