@@ -1,8 +1,8 @@
 const Product = require("../.MODULE-Schema/productSchema")
-const {errorHandler} = require( "../.Error_Message-DB/dbEroor.js")
+const {errorHandler} = require( "../.Error_Message-DB/dbEroor")
 
 const formidable = require("formidable")
-const _ = require("lodash")
+// const _ = require("lodash")
 const fs = require("fs")
 
 exports.productById = (req,res,next,id) => {
@@ -61,7 +61,7 @@ exports.createProduct = (req,res) => {
             product.photo.contentType  = files.photo.type
         }
 
-        product.save((err,result) => {
+        product.Save((err,result) => {
             if(err)
             {
                 return res.status(400).json({error: errorHandler(err) })
