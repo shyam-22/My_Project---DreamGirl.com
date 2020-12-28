@@ -49,10 +49,10 @@ exports.createProduct = (req,res) => {
         }
 
         let product = new Product(fields)
-
+         //Validation : restrict user to upload the image within size...1 KB =1ooo, 1 MB = 100000
         if(files.photo)
         {
-            console.log("FILES PHOTO:", files.photo);
+            console.log("FILES PHOTO:" , files.photo);
             if(files.photo.size > 1000000)
             {
                 return res.status(400).json({error:"Image should be less than 1MB in size" })
@@ -61,7 +61,7 @@ exports.createProduct = (req,res) => {
             product.photo.contentType  = files.photo.type
         }
 
-        product.save((err,result) =>  {
+        product.save((err,result) => {
             if(err)
             {
                 return res.status(400).json({error: errorHandler(err) })
@@ -71,7 +71,7 @@ exports.createProduct = (req,res) => {
     })
 };
 //Reason why and what ---->For image upload [multer,formidable]
-//FormData() ----> bcoz in product schema we use image uploadation
+//FormData() ----> bcoz in product schema we use image upload
  //1kb = 1000.....1mb = 1000000
 
 //Output will be like
