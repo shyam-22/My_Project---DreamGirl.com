@@ -13,8 +13,6 @@ const userRoutes = require("./.Routes/user");
 const categoryRoutes = require("./.Routes/category");
 const productRoutes = require("./.Routes/product");
 
-
-
 //app connection with express
 const app = express();
 
@@ -37,10 +35,8 @@ app.use("/api",userRoutes);
 app.use("/api",categoryRoutes);
 app.use("/api",productRoutes);
 
-
-
+//Port connection
 const port = process.env.PORT || 8000
-
 app.listen(port, () => {
     console.log(`server is running on the port ${port}`)
 })
