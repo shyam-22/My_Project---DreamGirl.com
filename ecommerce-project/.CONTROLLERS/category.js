@@ -2,16 +2,32 @@ const Category = require("../.MODULE-Schema/categoryScheme")
 
 const {errorHandler} = require( "../.Error_Message-DB/dbEroor.js");
 
-
 exports.createCategory = (req,res) => {
-    const category = new Category(req.body)
+    const category = new Category(req.body);
     category.save((err,data)=> {
         if(err)
         {
-            return res.this.status(400).json({error: errorHandler(err) })
+            return res.status(400).json({error: errorHandler(err) })
         }
-        res.json({data : data})
+        res.json({data})
     })
+}
+
+//fetch Category By Id
+exports.categoryById = (req,res,next,id) => {
+    Category.findById(id).exec((err,category) => {
+        if(err || !category)
+        {
+            return res.status(400).json({error: "category does not exist"})            
+        }
+        req.category = category;
+        next();
+    })
+}
+
+//Read the category By ITs Id
+exports.read = (req,res) => {
+    return res.json(req.category)
 }
 
 
