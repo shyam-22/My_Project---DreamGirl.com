@@ -21,9 +21,9 @@ exports.read = (req,res) => {
     req.product.photo = undefined
     return res.json(req.product)
 }
-//Remove the Product
+//Remove the Product By ITs add
 exports.remove = (req,res) => {
-    let product = req.Product
+    let product = req.product
     product.remove((err,deletedProduct)=> {
         if(err)
         {
@@ -48,7 +48,7 @@ exports.createProduct = (req,res) => {
             return res.status(400).json({error : "sorry....!all fields are required"});
         }
 
-        let product = new Product(fields)
+        let product = new Product(req.fields)
         //Validation : restrict user to upload the image within size...1 KB =1ooo, 1 MB = 100000
         if(files.photo)
         {
@@ -68,7 +68,7 @@ exports.createProduct = (req,res) => {
         });
     });
 };
-//Update the Product
+//Update the Product By Its ID
 exports.update = (req,res) => {
     let form = new formidable.IncomingForm()
     form.keepExtensions = true
