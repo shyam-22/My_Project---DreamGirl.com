@@ -30,6 +30,42 @@ exports.read = (req,res) => {
     return res.json(req.category)
 }
 
+//Update the category by Its Id
+exports.update = (req,res) => {
+    const category = req.category
+    category.name = req.body.name
+    category.save((err,success) => {
+        if(err)
+        {
+            return res.status(400).json({err: errorHandler(err)})
+        }
+        res.json({success : "Category Name Updated Successfully"})
+    })
+}
+
+//Delete the Category by Its Id
+exports.remove = (req,res) => {
+    const category = req.category
+    category.remove((err,success) => {
+        if(err)
+        {
+            return res.status(400).json({err: errorHandler(err)})
+        }
+        res.json({ message : "Category Deleted Successfully"})
+    })
+}   
+
+//Print All the Category
+exports.list = (req,res) => {
+    Category.find().exec((err,category)=> {
+        if(err)
+        {
+            return res.status(400).json({err: errorHandler(err)})
+        }
+        res.json(category)
+    })
+}
+
 
 //Output will be like
 // {
