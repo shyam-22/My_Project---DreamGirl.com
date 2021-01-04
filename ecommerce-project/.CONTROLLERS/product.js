@@ -42,13 +42,13 @@ exports.createProduct = (req,res) => {
             return res.status(400).json({error : "image could not be uploaded"});
         }
         //Validation : Now check for all fields 
-        const {name,description,price,category,quantity,shipping} = fields
+        const {name,description,price,category,quantity,shipping,photo} = fields
         if(!name ||  !description ||  !price ||  !category ||  !quantity ||  !shipping || !photo)
         {
             return res.status(400).json({error : "sorry....!all fields are required"});
         }
 
-        let product = new Product(req.fields)
+        let product = new Product(fields)
         //Validation : restrict user to upload the image within size...1 KB =1ooo, 1 MB = 100000
         if(files.photo)
         {
@@ -91,7 +91,7 @@ exports.update = (req,res) => {
          //Validation : restrict user to upload the image within size...1 KB =1ooo, 1 MB = 100000
         if(files.photo)
         {
-            console.log("FILES PHOTO:" , files.photo);
+            console.log("FILES PHOTO:" , files.photo)
             if(files.photo.size > 1000000)
             {
                 return res.status(400).json({error:"Image should be less than 1MB in size" })
@@ -115,4 +115,48 @@ exports.update = (req,res) => {
  //1kb = 1000.....1mb = 1000000
 
 //Output will be like
+
+//--------------------------------------------------------------------------------------------------------------
+//Important feature of any Ecomm application we might to return product  By sell and arrival--> 
+//By_Sell Routes in form of --->  /products?sortBy = sold&order=desc&limit=4
+//By_Arrival Routes in form of ---> /products?sortBy = createdAt&order=desc&limit=4
+
+//If no params are sent,then all products ae return --->fetch the products,based on what we need
+exports.list = (req,res) => {
+    let order  = req.query.order ? req.query.order : "ase"
+    let sortBy  = req.query.sortBy ? req.query.sortBy : "_id"
+    let  limit = req.query.limit ? parseInt(req.query.limit) : 5
+
+    Product.find()
+           .select("-photo")
+           .populate("category")
+           .sort([[sortBy,order]])
+           .limit(limit)
+           .exec( (err,products) => {
+            if(err)
+            {
+                return res.status(400).json({ error : "Products Not found "})
+            }
+            res.send(products)
+           })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
