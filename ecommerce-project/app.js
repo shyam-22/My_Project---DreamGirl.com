@@ -11,7 +11,7 @@ const expressvalidator = require("express-validator")
 const authRoutes = require("./.Routes/auth");
 const userRoutes = require("./.Routes/user");
 const categoryRoutes = require("./.Routes/category");
-const productRoutes = require("./.Routes/product.js");
+const productRoutes = require("./.Routes/product");
 
 //app connection with express
 const app = express();
