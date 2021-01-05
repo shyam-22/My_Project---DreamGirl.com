@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 
-const {createProduct,productById,read,remove,update,list,listRelated,listCategories,listBySearch,photo} = require("../.CONTROLLERS/product") 
+const {create,productById,read,remove,update,list,listRelated,listCategories,listBySearch,photo} = require("../.CONTROLLERS/product") 
 
 const {requireSignin,isAuth,isAdmin} = require("../.CONTROLLERS/auth")
 const {userById} = require("../.CONTROLLERS/user")
@@ -9,7 +9,7 @@ const {userById} = require("../.CONTROLLERS/user")
 
 
 //create a route method
-router.post("/product/create/:userId",requireSignin,isAuth,isAdmin,createProduct)
+router.post("/product/create/:userId",requireSignin,isAuth,isAdmin,create)
 router.get("/product/:productId", read)
 router.delete("/product/:productId/:userId", requireSignin,isAuth,isAdmin,remove)
 router.put("/product/:productId/:userId", requireSignin,isAuth,isAdmin,update)

@@ -33,7 +33,7 @@ exports.remove = (req,res) => {
     })
 }
 //Create the Product
-exports.createProduct = (req,res) => {
+exports.create = (req,res) => {
     let form = new formidable.IncomingForm()
     form.keepExtensions= true
     form.parse(req, (err,fields, files) => {

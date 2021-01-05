@@ -5,6 +5,7 @@ const morgan = require("morgan")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const expressvalidator = require("express-validator")
+const cors  = require("cors");
 
 
 //Import all your routes here
@@ -13,7 +14,8 @@ const userRoutes = require("./.Routes/user");
 const categoryRoutes = require("./.Routes/category");
 const productRoutes = require("./.Routes/product");
 
-//app connection with express
+
+//app connection with express 
 const app = express();
 
 //we will use morgan as a middleware
@@ -21,6 +23,7 @@ app.use(morgan("dev"))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(expressvalidator())
+app.use(cors())
 
 //Database connection
 mongoose.connect(process.env.MONGO_URL,{
