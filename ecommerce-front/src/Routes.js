@@ -2,9 +2,9 @@ import React from 'react'
 import {BrowserRouter,Switch,Route} from "react-router-dom"
 //BrowserRouter already is a component-->so this will wrap the rest of routes i application
 //BrowserRouter is main wrapper tha t will make the props available in all this components
-import Signup from "./USER/Signup"
-import Signin from "./USER/Signin"
-import Home from "./CORE component/Home"
+import Signup from "./USER/Signup";
+import Signin from "./USER/Signin";
+import Home from "./CORE component/Home";
 
 const Routes = () => {
     return (
