@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react"
+import Menu from "./Menu"
 
-const Layout = ({title = "Title",description ="description",children,className}) => {
-    return (
+const Layout = ( {title = "Title",description ="description",children,className} ) =>  (
+
         <div>
+            <Menu/>
             <div className="jumbotron">
             <h2>{title}</h2>
             <p className="lead">{description}</p>
@@ -11,7 +13,6 @@ const Layout = ({title = "Title",description ="description",children,className})
                 {children}
             </div>
         </div>
-    )
-}
+    );
 
-export default Layout
+export default Layout;

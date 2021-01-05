@@ -3,8 +3,8 @@ import Layout from "./Layout"
 
 const Home = () => {
     return (
-        <Layout title="home page" description="Node React Ecommerce Home page">
-                ....
+        <Layout title="Home page" description="Node React ECommerce Home page">
+            ...
         </Layout>
     )
 }

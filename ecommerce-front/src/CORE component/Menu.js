@@ -15,7 +15,7 @@ const Menu = (props) => {
         <div>
             <ul className="nav nav-tabs bg-primary"> 
                 <li className="nav-item">
-                    <Link className="nav-link" style={isActive(props.history,"/")} to="/">Home</Link>
+                    <Link className="nav-link" style={isActive(props.history,"/")} to="/home">Home</Link>
                 </li>
 
                 <li className="nav-item">
