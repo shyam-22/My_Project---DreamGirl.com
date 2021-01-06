@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from "../CORE component/Layout"
 import {Link} from "react-router-dom"
-import {signup} from "../Auth/api_signUp"
+import {signup,authenticate} from "../Auth/api_signUp"
 
 const Signup = () => {
 
@@ -19,7 +19,7 @@ const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setValue({...value,error:false})
-        
+
         signup({name,email,password})
         .then(data => {
             if(data.error){

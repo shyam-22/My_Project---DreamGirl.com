@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link,withRouter} from "react-router-dom"
+import {signout} from "../Auth/api_signUp"
 //Active Class-----> history = Browser/actual_path that will be history, path = we will pass manually
 const isActive = (history,path) => {
     if(history.location.pathname === path){
@@ -19,11 +20,22 @@ const Menu = (props) => {
                 </li>
 
                 <li className="nav-item">
-                    <Link className="nav-link" style={isActive(props.history,"/signin")} to="/signin">Signin</Link>
+                    <Link className="nav-link" style={isActive(props.history,"/signin")} to="/signin">SignIn</Link>
                 </li>
 
                 <li className="nav-item">
-                    <Link className="nav-link" style={isActive(props.history,"/signup")} to="/signup">Signup</Link>
+                    <Link className="nav-link" style={isActive(props.history,"/signup")} to="/signup">SignUp</Link>
+                </li>
+
+                <li className="nav-item">
+                    <span 
+                        className="nav-link" style={{cursor:"pointer",color:"black"}} 
+                        onClick={()=>
+                        signout(() => {
+                            props.history.push("/")
+                            })
+                    }>SignOut
+                    </span>
                 </li>
 
                 {/* <li className="nav-item">

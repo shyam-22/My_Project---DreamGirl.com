@@ -23,3 +23,41 @@ export const signin = (user) => {
             .then(response => { return response.json() })
             .catch(err => { console.log(err)})
         }
+
+//Authenticate User----> By getting its email/password related Token
+//Save it into the Local storage---->Local storage is just a property of the Browser(Key : value)_
+export const authenticate = (data,next) => {
+    if(typeof window !== "undefined"){
+        localStorage.setItem("jwt",JSON.stringify(data))
+        next()
+    }
+}
+
+export const signout = (next) => {
+    if(typeof window !== "undefined"){
+        localStorage.removeItem("jwt")
+        next()
+        return fetch(`${API}/signout`, {
+            method:"GET",
+        })
+        .then(response => { console.log("signout", response)})
+        .catch(err => console.log(err))
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
