@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Layout from "../CORE component/Layout"
-//import {API} from "../config"
+import {API} from "../config"
 
 
 const Signup = () => {
@@ -15,11 +15,18 @@ const Signup = () => {
 
     const signUp = (name,email,password) => {
         console.log(name,email,password)
+        fetch(`${API}/signup`,{
+            method : "POST",
+            headers : {Accept : "application/json", "content-Type":"application/json"},
+            body : JSON.stringify(name,email,password)
+        })
+        .then(response => { return response.json() })
+        .catch(err => { console.log(err)})
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        signUp(name,email,password)
+        signUp({name,email,password})
     }
     
     const signUpForm = () =>(
