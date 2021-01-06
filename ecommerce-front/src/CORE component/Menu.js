@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {Link,withRouter} from "react-router-dom"
-import {signout} from "../Auth/api_signUp"
+import {signout, isAuthenticated} from "../Auth/api_signUp"
 //Active Class-----> history = Browser/actual_path that will be history, path = we will pass manually
 const isActive = (history,path) => {
     if(history.location.pathname === path){
@@ -19,15 +19,22 @@ const Menu = (props) => {
                     <Link className="nav-link" style={isActive(props.history,"/")} to="/home">Home</Link>
                 </li>
 
-                <li className="nav-item">
-                    <Link className="nav-link" style={isActive(props.history,"/signin")} to="/signin">SignIn</Link>
-                </li>
+                { !isAuthenticated() && (
+                    <Fragment>
+                        <li className="nav-item">
+                        <Link className="nav-link" style={isActive(props.history,"/signin")} to="/signin">SignIn</Link>
+                        </li>
 
-                <li className="nav-item">
-                    <Link className="nav-link" style={isActive(props.history,"/signup")} to="/signup">SignUp</Link>
-                </li>
+                        <li className="nav-item">
+                        <Link className="nav-link" style={isActive(props.history,"/signup")} to="/signup">SignUp</Link>
+                        </li>
+                    </Fragment>
+                    
+                )}
 
-                <li className="nav-item">
+                { isAuthenticated() && (
+                    <Fragment>
+                    <li className="nav-item">
                     <span 
                         className="nav-link" style={{cursor:"pointer",color:"black"}} 
                         onClick={()=>
@@ -37,6 +44,10 @@ const Menu = (props) => {
                     }>SignOut
                     </span>
                 </li>
+                    </Fragment>
+                )}
+
+               
 
                 {/* <li className="nav-item">
                     <Link className="nav-link" to="/">Home</Link>
