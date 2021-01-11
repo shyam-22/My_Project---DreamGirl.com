@@ -1,4 +1,5 @@
 import React,{useState} from "react"
+import { Link } from "react-router-dom"
 import {isAuthenticated} from "../Auth/api_signUp"
 import Layout from "../CORE component/Layout"
 import { createCategory } from "./apiAdmin"
@@ -25,7 +26,7 @@ const AddCategory = () => {
         createCategory(user._id,token,{name})
         .then(data => {
             if(data.error){
-                setError(data.error)
+                setError(true)
             }else{
                 setError("")
                 setSuccess(true)
@@ -35,24 +36,30 @@ const AddCategory = () => {
 
     const showSuccess = () => {
         if(success){
-            return <h3 className="text-success">{name} is created</h3>
+            return <h3 className="text-success">{name} category is created</h3>
         }
     }
 
     const showError = () => {
         if(error){
-            return <h3 className="text-danger">{name} is should be unique</h3>
+            return <h3 className="text-danger">category Name should be unique</h3>
         }
     }
+
+    const goBack = () => (
+        <div className="mt-2">
+            <Link to="/admin/dashboard" className="text-success"><b><u>Back To dashboard</u></b></Link>
+        </div>
+    )
 
     const newCategoryForm = () => (
         <form onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Category Name</label>
                 <input type="text"  className="form-control" placeholder="Enter category Name"
-                onChange={handleChange} value={name}/>
+                onChange={handleChange} value={name} autoFocus required/>
 
-                <button type="button" class="btn btn-outline-primary mt-2">Create category</button>
+                <button type="submit" class="btn btn-outline-primary mt-2">Create category</button>
             </div>
         </form>
     )
@@ -61,9 +68,10 @@ const AddCategory = () => {
         <Layout title="Add a new Category " description={`Have a good day ${user.name}.....,ready to add new category!!! `}>
             <div className="row">
                 <div className="col-8 offset-2">
-                    {newCategoryForm()}  
+                    {showSuccess()} 
                     {showError()}
-                    {showSuccess()}     
+                    {newCategoryForm()}
+                    {goBack()}      
                 </div>
             </div>
             
