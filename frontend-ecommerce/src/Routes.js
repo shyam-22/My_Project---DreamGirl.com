@@ -9,6 +9,7 @@ import PrivateRoutes from './Auth/PrivateRoutes';
 import userDashboard from './USER/userDashboard';
 import AdminRoute from './Auth/AdminRoute';
 import AdminDashboard from './USER/AdminDashboard';
+import AddCategory from './Admin/AddCategory';
 
 const Routes = () => {
     return (
@@ -20,6 +21,8 @@ const Routes = () => {
                 //Dashboard only available to authenticated user....Here we want to create some kind of component
                 <PrivateRoutes path="/user/dashboard" exact component={userDashboard}/>
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
+                <AdminRoute path="/create/category" exact component={AddCategory}/>
+
             </Switch>
         </BrowserRouter>
     )
