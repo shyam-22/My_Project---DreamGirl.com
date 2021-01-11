@@ -20,6 +20,10 @@ const Menu = (props) => {
                     <Link className="nav-link" style={isActive(props.history,"/")} to="/home">Home</Link>
                 </li>
 
+                <li className="nav-item">
+                    <Link className="nav-link" style={isActive(props.history,"/dashboard")} to="/dashboard">Dashboard</Link>
+                </li>
+
                 { !isAuthenticated() && (
                     <Fragment>
                         <li className="nav-item">
