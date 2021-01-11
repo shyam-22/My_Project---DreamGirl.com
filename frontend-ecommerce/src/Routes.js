@@ -7,16 +7,19 @@ import Signin from "./USER/Signin";
 import Home from "./CORE component/Home";
 import PrivateRoutes from './Auth/PrivateRoutes';
 import userDashboard from './USER/userDashboard';
+import AdminRoute from './Auth/AdminRoute';
+import AdminDashboard from './USER/AdminDashboard';
 
 const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home}/>
-                <Route path="/signup" component={Signup}/>
-                <Route path="/signin" component={Signin}/>
+                <Route path="/signup" exact component={Signup}/>
+                <Route path="/signin" exact component={Signin}/>
                 //Dashboard only available to authenticated user....Here we want to create some kind of component
-                <PrivateRoutes path="/dashboard" component={userDashboard}/>
+                <PrivateRoutes path="/user/dashboard" exact component={userDashboard}/>
+                <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
             </Switch>
         </BrowserRouter>
     )
