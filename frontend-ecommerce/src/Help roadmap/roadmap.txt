@@ -1,0 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+Now moving further ....we have to start working in the  user dashboard
+so in this ecommerce website there will be two types of user
+--->one will be admin,,,,who will be creating products,checking orders and all that stuff(Admin stuff)
+--->second will be user,,,who will just login,signup,purchase
+
+"so we need to work on the dashboard and it has to to be pretty flexible bcoz it will be used both[admin and user]"

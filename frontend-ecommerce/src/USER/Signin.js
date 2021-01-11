@@ -23,7 +23,7 @@ const Signin = () => {
         signin({email,password})
         .then(data => {
             if(data.error){
-                setValue({...value,error:data.error, loading:false})
+                setValue({...value,error:data.error, loading:false})//here we grab d rest of d value using [...]
             }
             else{
                 authenticate(data, () => {
@@ -50,6 +50,7 @@ const Signin = () => {
             <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
         </form>
     )
+
     const showError = () => (
         <div className="alert alert-danger" style={{display : error ? "" : "none"}}>
             {error}

@@ -3,6 +3,7 @@ import Layout from "../CORE component/Layout"
 import {Link} from "react-router-dom"
 import {signup,authenticate} from "../Auth/api_signUp"
 
+//if i used curly braces.....then i need to used use return keyword
 const Signup = () => {
 
     const [value,setValue] = useState({name : "", email : "", password :"", error : "", success:""})
