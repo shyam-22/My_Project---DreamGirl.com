@@ -86,18 +86,20 @@ const AddProduct = () => {
             </div>
 
             <div className="form-group">
-                <label className="text-muted">Category</label>
-                <select onChange={handleChange("category")}  className="form-control">
-                <option value="5fec766b65833b1e7c896ba7">Vue Js</option>
-                </select>
-            </div>
-
-            <div className="form-group">
                 <label className="text-muted">Quantity</label>
                 <input type="number" className="form-control" name="quantity" value={quantity}
                 onChange={handleChange("quantity")} />
             </div>
 
+            <div className="form-group">
+                <label className="text-muted">Category</label>
+                <select onChange={handleChange("category")}  className="form-control">
+                <option value="5fec766b65833b1e7c896ba7">Vue Js</option>
+                <option value="5fec766b65833b1e7c896ba7">Noddy</option>
+                </select>
+            </div>
+
+        
             <div className="form-group">
                 <label className="text-muted">Shipping</label>
                 <select onChange={handleChange("shipping")}  className="form-control">

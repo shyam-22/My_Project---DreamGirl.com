@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     description :{type:String, trim:true, required: true, maxlength:2000},
     price :{type:Number, trim:true, required: true, maxlength:32},
     category :{type: ObjectId, ref :"Category", trim:true, required: true},
-    quantity :{type:Number},
+    quantity :{type:Number, required:true},
     sold :{type:Number,default:0},
     shipping : {required : false,type:Boolean},
     photo : {data : Buffer,contentType : String}
