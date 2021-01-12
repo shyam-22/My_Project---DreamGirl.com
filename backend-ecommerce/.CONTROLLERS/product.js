@@ -1,8 +1,8 @@
 const formidable = require('formidable');
 const _ = require('lodash');
 const fs = require('fs');
-const Product = require('../models/product');
-const { errorHandler } = require('../helpers/dbErrorHandler');
+const Product = require("../.MODULE-Schema/productSchema");
+const { errorHandler } = require("../.Error_Message-DB/dbEroor");
 
 exports.productById = (req, res, next, id) => {
     Product.findById(id)
@@ -27,7 +27,7 @@ exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
     form.parse(req, (err, fields, files) => {
-        if (err) {
+        if(err){
             return res.status(400).json({
                 error: 'Image could not be uploaded'
             });
@@ -41,10 +41,7 @@ exports.create = (req, res) => {
             });
         }
 
-        let product = new Product(fields);
-
-        // 1kb = 1000
-        // 1mb = 1000000
+        let product = new Product(fields); // 1kb = 1000// 1mb = 1000000
 
         if (files.photo) {
             // console.log("FILES PHOTO: ", files.photo);
