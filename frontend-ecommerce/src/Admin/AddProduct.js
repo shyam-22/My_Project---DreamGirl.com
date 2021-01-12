@@ -37,7 +37,18 @@ const AddProduct = () => {
     },[]);
 
     const clickSubmit = (e) => {
-        //
+        e.preventDefault()
+        setValues({...values,error:"",loading:true})
+        createProduct(user._id,token,formData)
+        .then(data => {
+            if(data.error){
+                setValues({...values,error:data.error})
+            }else{
+                setValues({...values,name:"",description:"",photo:"",price:"",shipping:"",
+                            quantity:"",loading:false, createdProduct:data.name
+            })  
+            }
+        })
     }
     
     const goBack = () => (
@@ -57,7 +68,7 @@ const AddProduct = () => {
             </div>
 
             <div className="form-group">
-                <label className="text-muted">Name</label>
+                <label>Name</label>
                 <input type="text" className="form-control" name="name" value={name}
                 onChange={handleChange("name")} />
             </div>

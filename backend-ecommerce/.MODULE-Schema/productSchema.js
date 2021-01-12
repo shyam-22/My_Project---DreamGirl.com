@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema({
 },
   {timestamps : true}
 );
-module.exports = mongoose.model("Product", productSchema)
+module.exports = mongoose.model("Product", productSchema);
 
 //Reason why and what
 //ObjectId----> category Type -ObjectId [  It will go to category model   ]
