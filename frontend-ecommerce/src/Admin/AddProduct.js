@@ -51,7 +51,6 @@ const AddProduct = () => {
             <form className="mb-3" onSubmit={clickSubmit}>
             <h4>Post Photo</h4>
             <div className="form-group">
-            //And this slightly looks better...so we going to keep this
                 <label className="btn btn-secondary"> 
                     <input type="file" name="photo" accept="image/*" onChange={handleChange("photo")} />
                 </label>
