@@ -25,6 +25,15 @@ export const createCategory = (userId,token,category) => {
                     },
                         body : product
                     })
-                    .then(response => { return response.json() })
-                    .catch(err => { console.log(err)})
+                    .then(response => response.json())
+                    .catch(err => console.log(err))
                 }
+
+export const getCategories = () => {
+    return fetch(`${API}/all/categories`,
+    {
+        method:"GET"
+    })
+    .then(response => response.json() )
+    .catch(err => console.log(err))
+}

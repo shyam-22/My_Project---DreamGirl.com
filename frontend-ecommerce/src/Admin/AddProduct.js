@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react"
 import { Link } from "react-router-dom"
 import {isAuthenticated} from "../Auth/api_signUp"
 import Layout from "../CORE component/Layout"
-import { createProduct} from "./apiAdmin"
+import { createProduct,getCategories} from "./apiAdmin"
 
 const AddProduct = () => {
     const {user,token} = isAuthenticated()
@@ -32,8 +32,19 @@ const AddProduct = () => {
         setValues({...values,[name] : value})
     }
 
+    //Load all categories in the dropdown box,,,and set form data
+    const init = () => {
+        getCategories().then(data => {
+            if(error){
+                setValues({ ...values, error:data.error})
+            }else{
+                setValues({ ...values, categories: data, formData : new FormData() })
+            }
+        })
+    }
+
     useEffect( () => {
-        setValues({ ...values, formData:new FormData() });
+        init();
     },[]);
 
     const clickSubmit = (e) => {
@@ -41,12 +52,11 @@ const AddProduct = () => {
         setValues({...values,error:"",loading:true})
         createProduct(user._id,token,formData)
         .then(data => {
-            if(data.error){
-                setValues({...values,error:data.error})
+            if(error){
+                setValues({ ...values,error:data.error, loading:true})
             }else{
-                setValues({...values,name:"",description:"",photo:"",price:"",shipping:"",
-                            quantity:"",loading:false, createdProduct:data.name
-            })  
+                setValues({...values,name:"",description:"",photo:"",price:"",shipping:"",category:"",
+                            quantity:"",loading:false, createdProduct:data.name});
             }
         })
     }
@@ -92,17 +102,20 @@ const AddProduct = () => {
             </div>
 
             <div className="form-group">
-                <label className="text-muted">Category</label>
+                <label>Category</label>
                 <select onChange={handleChange("category")}  className="form-control">
-                <option value="5fec766b65833b1e7c896ba7">Vue Js</option>
-                <option value="5fec766b65833b1e7c896ba7">Noddy</option>
+                <option>Please select Categories</option>
+                {categories && categories.map((c, i) => (
+                    <option key={i} value={c._id}>{c.name}</option>
+                ))}
                 </select>
             </div>
 
         
             <div className="form-group">
-                <label className="text-muted">Shipping</label>
+                <label>Shipping</label>
                 <select onChange={handleChange("shipping")}  className="form-control">
+                <option>Please select</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
                 </select>

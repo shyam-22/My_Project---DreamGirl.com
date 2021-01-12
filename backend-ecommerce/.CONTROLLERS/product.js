@@ -162,7 +162,7 @@ exports.listRelated = (req, res) => {
                     error: 'Products not found'
                 });
             }
-            res.json(products);
+            return res.json({products});
         });
 };
 

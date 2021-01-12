@@ -10,9 +10,12 @@ const {userById} = require("../.CONTROLLERS/user")
 
 //create a route method
 router.post("/product/create/:userId",requireSignin,isAuth,isAdmin,create)
-router.get("/product/:productId", read)
+
 router.delete("/product/:productId/:userId", requireSignin,isAuth,isAdmin,remove)
+
 router.put("/product/:productId/:userId", requireSignin,isAuth,isAdmin,update)
+
+router.get("/product/:productId", read)
 router.get("/products", list)
 router.get("/products/related/:productId",listRelated)
 router.get("/products/categories", listCategories)
