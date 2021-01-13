@@ -11,6 +11,7 @@ import AdminRoute from './Auth/AdminRoute';
 import AdminDashboard from './USER/AdminDashboard';
 import AddCategory from './Admin/AddCategory';
 import AddProduct from './Admin/AddProduct';
+import Shop from "./CORE component/Shop"
 
 const Routes = () => {
     return (
@@ -20,6 +21,8 @@ const Routes = () => {
                 <Route path="/home" exact component={Home}/>
                 <Route path="/signup" exact component={Signup}/>
                 <Route path="/signin" exact component={Signin}/>
+                <Route path="/shop" exact component={Shop}/>
+
                 //Dashboard only available to authenticated user....Here we want to create some kind of component
                 <PrivateRoutes path="/user/dashboard" exact component={userDashboard}/>
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>

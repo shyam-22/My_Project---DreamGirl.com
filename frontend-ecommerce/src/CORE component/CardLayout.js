@@ -6,11 +6,12 @@ const CardLayout = ({product}) => {
     return (
         <div className="col-3 mb-2">
             <div className="card">
-                <div className="card-header">{product.name}</div>
+                <div className="card-header text-center">{product.name}</div>
                 <div className="card-body">
-                    <ShowImage product={product} url={"product"}/>
+                    <center><ShowImage product={product} url={"product"}/>
                     <p>{product.description}</p>
                     <p>${product.price}</p>
+                    </center>
                     <Link to="/">
                     <button type="button" className="btn btn-outline-primary mt-2 mb-2 mr-2">View Product</button>
                     </Link>

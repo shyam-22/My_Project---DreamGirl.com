@@ -20,6 +20,10 @@ const Menu = (props) => {
                     <Link className="nav-link" style={isActive(props.history,"/")} to="/home">Home</Link>
                 </li>
 
+                <li className="nav-item">
+                    <Link className="nav-link" style={isActive(props.history,"/shop")} to="/shop">Shop</Link>
+                </li>
+
                 {
                     isAuthenticated() && isAuthenticated().user.role === 0 && (
                     <li className="nav-item">
