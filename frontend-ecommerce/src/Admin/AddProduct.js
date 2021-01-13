@@ -27,8 +27,8 @@ const AddProduct = () => {
     quantity,loading ,error,createdProduct,redirectToProfile,formData } = values
 
     const handleChange = name => e => {
-        const value = name === "photo" ? e.target.files[0] : e.target.value 
-        formData.set(name,value)
+        const value = name === "photo" ? e.target.files[0] : e.target.value;
+        formData.set(name,value);
         setValues({...values,[name] : value})
     }
 
@@ -60,13 +60,6 @@ const AddProduct = () => {
             }
         })
     }
-    
-    const goBack = () => (
-        <div className="mt-2">
-            <Link to="/admin/dashboard" className="text-success"><b><u>Back To dashboard</u></b></Link>
-        </div>
-    )
-
     const newProductForm = () => {
         return(
             <form className="mb-3" onSubmit={clickSubmit}>
@@ -126,12 +119,40 @@ const AddProduct = () => {
         )
     }
 
+    const showError = () => (
+        <div className="alert alert-danger" style={{display: error  ? "" : "none"}}>
+            {error}
+        </div>
+    )
+
+    const showSuccess = () => (
+        <div className="alert alert-info" style={{display: createdProduct  ? "" : "none"}}>
+            <h2>{`${createdProduct}`} is Created...!</h2>
+        </div>
+    )
+
+    const showLoading = () => (
+        loading  && (
+        <div className="alert alert-success">
+            <h2>Loading....</h2>
+        </div>)
+    )
+
+    const goBack = () => (
+        <div className="mt-2">
+            <Link to="/admin/dashboard" className="text-success"><b><u>Back To dashboard</u></b></Link>
+        </div>
+    )
+    
     return (
         <Layout title="Add a new Product " description={`Have a good day ${user.name}.....,ready to add new Product!!! `}>
         <div className="row">
             <div className="col-8 offset-2">
                {newProductForm()}
                {goBack()}
+               {showError()}
+               {showSuccess()}
+               {showLoading()}
             </div>
         </div>
         
@@ -139,4 +160,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default AddProduct;
