@@ -26,12 +26,6 @@ const AddProduct = () => {
     const {name,description,price,categories,category,shipping,
     quantity,loading ,error,createdProduct,redirectToProfile,formData } = values
 
-    const handleChange = name => e => {
-        const value = name === "photo" ? e.target.files[0] : e.target.value;
-        formData.set(name,value);
-        setValues({...values,[name] : value})
-    }
-
     //Load all categories in the dropdown box,,,and set form data
     const init = () => {
         getCategories().then(data => {
@@ -46,6 +40,12 @@ const AddProduct = () => {
     useEffect( () => {
         init();
     },[]);
+
+    const handleChange = name => event => {
+        const value = name === "photo" ? event.target.files[0] : event.target.value;
+        formData.set(name,value);
+        setValues({...values,[name] : value})
+    }
 
     const clickSubmit = (e) => {
         e.preventDefault()
@@ -66,31 +66,31 @@ const AddProduct = () => {
             <h4>Post Photo</h4>
             <div className="form-group">
                 <label className="btn btn-secondary"> 
-                    <input type="file" name="photo" accept="image/*" onChange={handleChange("photo")} />
+                    <input type="file" accept="image/*" onChange={handleChange("photo")} />
                 </label>
             </div>
 
             <div className="form-group">
                 <label>Name</label>
-                <input type="text" className="form-control" name="name" value={name}
+                <input type="text" className="form-control"  value={name}
                 onChange={handleChange("name")} />
             </div>
 
             <div className="form-group">
                 <label className="text-muted">Description</label>
-                <input type="textarea" className="form-control" name="description" value={description}
+                <input type="textarea" className="form-control"  value={description}
                 onChange={handleChange("description")} />
             </div>
 
             <div className="form-group">
                 <label className="text-muted">Price</label>
-                <input type="number" className="form-control" name="price" value={price}
+                <input type="number" className="form-control" value={price}
                 onChange={handleChange("price")} />
             </div>
 
             <div className="form-group">
                 <label className="text-muted">Quantity</label>
-                <input type="number" className="form-control" name="quantity" value={quantity}
+                <input type="number" className="form-control"  value={quantity}
                 onChange={handleChange("quantity")} />
             </div>
 
