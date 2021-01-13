@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+import ShowImage from "./showImage"
 
 const CardLayout = ({product}) => {
     return (
@@ -7,12 +8,13 @@ const CardLayout = ({product}) => {
             <div className="card">
                 <div className="card-header">{product.name}</div>
                 <div className="card-body">
+                    <ShowImage product={product} url={"product"}/>
                     <p>{product.description}</p>
                     <p>${product.price}</p>
                     <Link to="/">
                     <button type="button" className="btn btn-outline-primary mt-2 mb-2 mr-2">View Product</button>
                     </Link>
-                    <button type="button" className="btn btn-outline-primary mt-2 mb-2">Add_To_Cart</button>
+                    <button type="button" className="btn btn-outline-danger mt-2 mb-2">Add_To_Cart</button>
 
                 </div>
             </div>
