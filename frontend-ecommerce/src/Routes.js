@@ -17,6 +17,7 @@ const Routes = () => {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Home}/>
+                <Route path="/home" exact component={Home}/>
                 <Route path="/signup" exact component={Signup}/>
                 <Route path="/signin" exact component={Signin}/>
                 //Dashboard only available to authenticated user....Here we want to create some kind of component

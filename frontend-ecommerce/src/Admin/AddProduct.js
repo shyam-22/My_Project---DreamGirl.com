@@ -120,7 +120,7 @@ const AddProduct = () => {
     }
 
     const showError = () => (
-        <div className="alert alert-danger" style={{display: error  ? "" : "none"}}>
+        <div className="alert alert-danger" style={{display: error  ? "All Fields Are Required" : "none"}}>
             {error}
         </div>
     )
@@ -148,11 +148,11 @@ const AddProduct = () => {
         <Layout title="Add a new Product " description={`Have a good day ${user.name}.....,ready to add new Product!!! `}>
         <div className="row">
             <div className="col-8 offset-2">
-               {newProductForm()}
-               {goBack()}
-               {showError()}
+                {showError()}
                {showSuccess()}
                {showLoading()}
+               {newProductForm()}
+               {goBack()}
             </div>
         </div>
         
