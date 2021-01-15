@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import Layout from "./Layout"
 import {getCategories} from "./apiCore"
-import CardLayout from "./CardLayout"
 import CheckBox_category from "./checkBox_category"
 
 const Shop = () => {
+    const [myFilters, setMyFilters] = useState({ 
+        filters : { category : [], price : [] }
+    })
     const [categories,setCategories] = useState([])
     const [error,setError] = useState(false)
 
@@ -17,9 +19,12 @@ const Shop = () => {
             }
         })
     }
-
+    //currently we are console log the category--->but we want to store in the state...so that we can use to make API req 
     const handleFilter = (filters,filterBy) => {
-        console.log("shop",filters,filterBy)
+        //console.log("shop",filters,filterBy)
+        const newFilters = {...myFilters}
+        newFilters.filters[filterBy] = filters
+        setMyFilters(newFilters)
     }
 
     useEffect(() => {
@@ -37,7 +42,7 @@ const Shop = () => {
                 </div>
 
                 <div className="col-8">
-                    right-sidebar
+                    {JSON.stringify(myFilters)}
                 </div>
             </div>
         </Layout>
