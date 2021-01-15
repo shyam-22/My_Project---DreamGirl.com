@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import Layout from "./Layout"
 import {getCategories} from "./apiCore"
 import CheckBox_category from "./checkBox_category"
+import Radiobtn_Price from "./Radiobtn_Price"
+import {prices} from "./FixPrice" 
 
 const Shop = () => {
     const [myFilters, setMyFilters] = useState({ 
@@ -34,10 +36,16 @@ const Shop = () => {
     return (
         <Layout title="Shopping page" description="search and find books of your choice....!" className="container-fluid">
             <div className="row">
+
                 <div className="col-4">
                     <h2>Category Filter</h2>
                     <ul>
                     <CheckBox_category categories={categories} handleFilter={filters => handleFilter(filters,"category")}/>    
+                    </ul>
+
+                    <h2>Price Filter</h2>
+                    <ul>
+                    <Radiobtn_Price prices={prices} handleFilter={filters => handleFilter(filters,"prices")}/>    
                     </ul>
                 </div>
 

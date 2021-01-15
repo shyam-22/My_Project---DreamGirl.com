@@ -22,6 +22,7 @@ const CheckBox_category = ({categories,handleFilter}) => {
         setChecked(newCheckedCategoryId)
         handleFilter(newCheckedCategoryId)
     }
+    
     return categories.map( (c,index) => (
         <li className="list-styled" key={index}>
             
