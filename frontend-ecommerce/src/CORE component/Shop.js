@@ -26,7 +26,23 @@ const Shop = () => {
         //console.log("shop",filters,filterBy)
         const newFilters = {...myFilters}
         newFilters.filters[filterBy] = filters
+
+        if(filterBy === "price"){
+            let priceValue = handlePrice(filters)
+            newFilters.filters[filterBy] = priceValue
+        }
         setMyFilters(newFilters)
+    }
+
+    const handlePrice = value => {
+        const data = prices
+        let array = []
+        for(let key in data){
+            if(data[key]._id === parseInt(value)){
+                array = data[key].array
+            }
+        }
+        return array
     }
 
     useEffect(() => {
@@ -45,7 +61,7 @@ const Shop = () => {
 
                     <h2>Price Filter</h2>
                     <ul>
-                    <Radiobtn_Price prices={prices} handleFilter={filters => handleFilter(filters,"prices")}/>    
+                    <Radiobtn_Price prices={prices} handleFilter={filters => handleFilter(filters,"price")}/>    
                     </ul>
                 </div>
 
