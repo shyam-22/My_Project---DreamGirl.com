@@ -13,7 +13,7 @@ const Shop = () => {
     const [categories,setCategories] = useState([])
     const [error,setError] = useState(false)
 
-    const [limit,setLimit] = useState(5)
+    const [limit,setLimit] = useState(6)
     const [skip,setSkip] = useState(0)
     const [filterResults,setFilterResults] = useState([]);
     const [size, setSize] = useState(0)
@@ -44,7 +44,7 @@ const Shop = () => {
     }
 
     const loadMore = (newFilters) => {
-        let toSkip = skip + limit;
+        let toSkip = skip + limit
         //console.log(newFilters)
         //we will fetch method getFilterProduct () method from api file
         getFilterProducts(toSkip,limit,newFilters)
@@ -61,9 +61,9 @@ const Shop = () => {
 
     const loadMoreButton = () => {
         return (
-            size > 0 && size >=limit && 
+            size > 0 && size >= limit && 
             ( 
-                <button type="button" className="btn btn-warning" onClick={loadMore}>Load More...</button>
+                <button type="submit" className="btn btn-warning" onClick={loadMore}>Load More...</button>
             )
         )
     }
@@ -114,7 +114,7 @@ const Shop = () => {
                 </div>
 
                 <div className="col-8">
-                    <h2 className="mb-3">Product List</h2>
+                    <h2 className="mb-4">Product List</h2>
                         <div className="row">
                         {filterResults.map((product,i) => (
                             <CardLayout key={i} product={product}/>
