@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Layout from "./Layout"
-import {getCategories} from "./apiCore"
+import {getCategories,getFilterProducts} from "./apiCore"
 import CheckBox_category from "./checkBox_category"
 import Radiobtn_Price from "./Radiobtn_Price"
 import {prices} from "./FixPrice" 
@@ -12,12 +12,29 @@ const Shop = () => {
     const [categories,setCategories] = useState([])
     const [error,setError] = useState(false)
 
+    const [limit,setLimit] = useState(6)
+    const [skip,setSkip] = useState(6)
+    const [filterResults,setFilterResults] = useState(6)
+
     const init = () => {
         getCategories().then(data => {
             if(data.error){
-                setError(error)
+                setError(data.error)
             }else{
                 setCategories(data)
+            }
+        })
+    }
+
+    const loadFilterResults = (newFilters) => {
+        //console.log(newFilters)
+        //we will fetch method getFilterProduct () method from api file
+        getFilterProducts(skip,limit,newFilters)
+        .then(data => {
+            if(data.error){
+                setError(data.error)
+            }else{
+                setFilterResults(data)
             }
         })
     }
@@ -46,12 +63,9 @@ const Shop = () => {
         return array
     }
 
-    const loadFilterResults = (newFilters) => {
-        console.log(newFilters)
-    }
-
     useEffect(() => {
         init()
+        loadFilterResults(skip,limit,myFilters.filters)
     },[])
 
     return (
@@ -71,7 +85,7 @@ const Shop = () => {
                 </div>
 
                 <div className="col-8">
-                    {JSON.stringify(myFilters)}
+                    {JSON.stringify(filterResults)}
                 </div>
             </div>
         </Layout>

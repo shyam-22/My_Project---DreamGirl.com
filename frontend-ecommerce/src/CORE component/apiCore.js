@@ -27,7 +27,7 @@ export const getFilterProducts = (skip,limit,filters = {}) => {
                     Accept : "application/json", 
                     "content-Type":"application/json",
             },
-                body : JSON.stringify(category)
+                body : JSON.stringify(data)
             })
             .then(response => { return response.json(data) })
             .catch(err => { console.log(err)})
