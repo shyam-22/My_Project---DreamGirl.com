@@ -52,9 +52,9 @@ const Shop = () => {
             if(data.error){
                 setError(data.error)
             }else{
-                setFilterResults([...filterResults,data.data])
+                setFilterResults([...filterResults, ...data.data])
                 setSize(data.size)
-                setSkip(0)
+                setSkip(toSkip)
             }
         })
     }
@@ -117,13 +117,14 @@ const Shop = () => {
                     <h2 className="mb-3">Product List</h2>
                         <div className="row">
                         {filterResults.map((product,i) => (
-                                <CardLayout key={i} product={product}/>
+                            <CardLayout key={i} product={product}/>
                         ))}
                         </div>
+                        <hr/>
+                {loadMoreButton()}
                     </div>
                 </div>
-                <hr/>
-                {loadFilterResults()}
+                
         </Layout>
     )
 }
