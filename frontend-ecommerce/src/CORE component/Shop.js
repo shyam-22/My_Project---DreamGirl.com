@@ -58,6 +58,15 @@ const Shop = () => {
             }
         })
     }
+
+    const loadMoreButton = () => {
+        return (
+            size > 0 && size >=limit && 
+            ( 
+                <button type="button" className="btn btn-warning" onClick={loadMore}>Load More...</button>
+            )
+        )
+    }
     //currently we are console log the category--->but we want to store in the state...so that we can use to make API req 
     const handleFilter = (filters,filterBy) => {
         //console.log("shop",filters,filterBy)
@@ -113,6 +122,8 @@ const Shop = () => {
                         </div>
                     </div>
                 </div>
+                <hr/>
+                {loadFilterResults()}
         </Layout>
     )
 }
