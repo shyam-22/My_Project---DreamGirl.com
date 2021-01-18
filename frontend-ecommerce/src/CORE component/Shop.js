@@ -4,6 +4,7 @@ import {getCategories,getFilterProducts} from "./apiCore"
 import CheckBox_category from "./checkBox_category"
 import Radiobtn_Price from "./Radiobtn_Price"
 import {prices} from "./FixPrice" 
+import CardLayout from './CardLayout'
 
 const Shop = () => {
     const [myFilters, setMyFilters] = useState({ 
@@ -21,7 +22,7 @@ const Shop = () => {
             if(data.error){
                 setError(data.error)
             }else{
-                setCategories(data)
+                setCategories(data.data)
             }
         })
     }
@@ -85,7 +86,14 @@ const Shop = () => {
                 </div>
 
                 <div className="col-8">
-                    {JSON.stringify(filterResults)}
+                    <h2>Product List </h2>
+                    <div className="row">
+                        {filterResults.map( (product,i) => (
+                            <div className="col-6 mb-3" key={i}>
+                                <CardLayout product={product}/>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </Layout>
