@@ -31,6 +31,7 @@ const Shop = () => {
             let priceValue = handlePrice(filters)
             newFilters.filters[filterBy] = priceValue
         }
+        loadFilterResults(myFilters.filters)
         setMyFilters(newFilters)
     }
 
@@ -43,6 +44,10 @@ const Shop = () => {
             }
         }
         return array
+    }
+
+    const loadFilterResults = (newFilters) => {
+        console.log(newFilters)
     }
 
     useEffect(() => {
