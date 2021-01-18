@@ -13,16 +13,17 @@ const Shop = () => {
     const [categories,setCategories] = useState([])
     const [error,setError] = useState(false)
 
-    const [limit,setLimit] = useState(6)
+    const [limit,setLimit] = useState(5)
     const [skip,setSkip] = useState(0)
-    const [filterResults,setFilterResults] = useState([])
+    const [filterResults,setFilterResults] = useState([]);
+    const [size, setSize] = useState(0)
 
     const init = () => {
         getCategories().then(data => {
             if(data.error){
                 setError(data.error)
             }else{
-                setCategories(data.data)
+                setCategories(data)
             }
         })
     }
@@ -30,12 +31,30 @@ const Shop = () => {
     const loadFilterResults = (newFilters) => {
         //console.log(newFilters)
         //we will fetch method getFilterProduct () method from api file
-        getFilterProducts(skip,limit,newFilters)
+        getFilterProducts(skip,limit,myFilters.filters)
         .then(data => {
             if(data.error){
                 setError(data.error)
             }else{
                 setFilterResults(data.data)
+                setSize(data.size)
+                setSkip(0)
+            }
+        })
+    }
+
+    const loadMore = (newFilters) => {
+        let toSkip = skip + limit;
+        //console.log(newFilters)
+        //we will fetch method getFilterProduct () method from api file
+        getFilterProducts(toSkip,limit,newFilters)
+        .then(data => {
+            if(data.error){
+                setError(data.error)
+            }else{
+                setFilterResults([...filterResults,data.data])
+                setSize(data.size)
+                setSkip(0)
             }
         })
     }
@@ -86,16 +105,14 @@ const Shop = () => {
                 </div>
 
                 <div className="col-8">
-                    <h2>Product List </h2>
-                    <div className="row">
+                    <h2 className="mb-3">Product List</h2>
+                        <div className="row">
                         {filterResults.map((product,i) => (
-                            <div className="col-6 mb-3" key={i}>
-                                <CardLayout product={product}/>
-                            </div>
+                                <CardLayout key={i} product={product}/>
                         ))}
+                        </div>
                     </div>
                 </div>
-            </div>
         </Layout>
     )
 }

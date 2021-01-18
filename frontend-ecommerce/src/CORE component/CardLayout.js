@@ -9,7 +9,7 @@ const CardLayout = ({product}) => {
                 <div className="card-header text-center">{product.name}</div>
                 <div className="card-body">
                     <center><ShowImage product={product} url={"product"}/>
-                    <p>{product.description}</p>
+                    <p>{product.description.substring(0,50)}</p>
                     <p>${product.price}</p>
                     </center>
                     <Link to="/">

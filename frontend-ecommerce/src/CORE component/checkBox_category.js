@@ -25,7 +25,6 @@ const CheckBox_category = ({categories,handleFilter}) => {
     
     return categories.map( (c,index) => (
         <li className="list-styled" key={index}>
-            
             <input type="checkbox" className="form-check-input" 
             onChange={handleToggle(c._id)} value={checked.indexOf(c._id === -1)}/>
             <label className="form-check-label">{c.name}</label>
