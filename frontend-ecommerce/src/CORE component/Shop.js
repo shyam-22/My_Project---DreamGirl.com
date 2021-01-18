@@ -43,11 +43,11 @@ const Shop = () => {
         })
     }
 
-    const loadMore = (newFilters) => {
+    const loadMore = () => {
         let toSkip = skip + limit
         //console.log(newFilters)
         //we will fetch method getFilterProduct () method from api file
-        getFilterProducts(toSkip,limit,newFilters)
+        getFilterProducts(toSkip,limit,myFilters.filters)
         .then(data => {
             if(data.error){
                 setError(data.error)
