@@ -14,8 +14,8 @@ const Shop = () => {
     const [error,setError] = useState(false)
 
     const [limit,setLimit] = useState(6)
-    const [skip,setSkip] = useState(6)
-    const [filterResults,setFilterResults] = useState(6)
+    const [skip,setSkip] = useState(0)
+    const [filterResults,setFilterResults] = useState([])
 
     const init = () => {
         getCategories().then(data => {
@@ -35,7 +35,7 @@ const Shop = () => {
             if(data.error){
                 setError(data.error)
             }else{
-                setFilterResults(data)
+                setFilterResults(data.data)
             }
         })
     }
@@ -88,7 +88,7 @@ const Shop = () => {
                 <div className="col-8">
                     <h2>Product List </h2>
                     <div className="row">
-                        {filterResults.map( (product,i) => (
+                        {filterResults.map((product,i) => (
                             <div className="col-6 mb-3" key={i}>
                                 <CardLayout product={product}/>
                             </div>
