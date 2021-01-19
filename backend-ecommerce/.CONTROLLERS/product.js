@@ -23,6 +23,26 @@ exports.read = (req, res) => {
     return res.json(req.product);
 };
 
+exports.listSearch = (req,res) => {
+    //create a query object  to hold  search value and category  value
+    const query = {}
+    //assign search value to query.name
+    if(req.query.search){
+        query.name = {$regex : req.query.search, $option : "i"}
+        //assign category value to query category
+        if(req.query.category &&  req.query.category != "All"){
+            query.category = req.query.category
+        }
+        //Now will find product based on query object with a 2 properties----> search and category
+        Product.find(query,(err,products) => {
+            if(err){
+                return res.status(400).json({error :  errorHandler(err)})
+            }
+            res.json(products)
+        }).select("-photo")
+    }
+}
+
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;

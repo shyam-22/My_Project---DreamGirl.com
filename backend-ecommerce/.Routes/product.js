@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 
-const {create,productById,read,remove,update,list,listRelated,listCategories,listBySearch,photo} = require("../.CONTROLLERS/product") 
+const {create,productById,read,remove,update,list,listRelated,listCategories,listBySearch,photo,listSearch} = require("../.CONTROLLERS/product") 
 
 const {requireSignin,isAuth,isAdmin} = require("../.CONTROLLERS/auth")
 const {userById} = require("../.CONTROLLERS/user")
@@ -17,6 +17,8 @@ router.put("/product/:productId/:userId", requireSignin,isAuth,isAdmin,update)
 
 router.get("/product/:productId", read)
 router.get("/products", list)
+router.get("/products/search", listSearch)
+
 router.get("/products/related/:productId",listRelated)
 router.get("/products/categories", listCategories)
 router.get("/product/photo/:productId",photo)
