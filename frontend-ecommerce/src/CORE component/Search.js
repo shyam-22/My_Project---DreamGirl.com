@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {getCategories} from "./apiCore"
+import {getCategories,list} from "./apiCore"
 import CardLayout from "./CardLayout"
 
 const Search = () => {
@@ -11,15 +11,14 @@ const Search = () => {
         searched : false
     })
 
-    const {categories,category,search,searched,results} = data;
+    const {categories,category,search,searched,results} = data
 
     const loadCategories = () => {
         getCategories().then(data => {
-            if(data.error){
+            if(data.error)
                 console.log(data.error)
-            }else{
-                setData({...data, categories:data})
-            }       
+            else
+                setData({...data, categories:data})       
         })
     }
 
@@ -27,12 +26,42 @@ const Search = () => {
         loadCategories()
     },[]) 
 
-    const searchSubmit = () => {
-        //
+    const searchData = () => {
+        console.log(search,category)
+        if(search){
+            list( {search : search || undefined,category:category})
+            .then(response => {
+                if(response.error){
+                    console.log(response.error)
+                }else{
+                    setData({...data, results:response, searched:true})
+                }
+            })
+        }
     }
 
-    const handleChange = () => {
-        //
+    const searchProducts = (results=[]) => {
+        return (
+        <div className="row">
+            {
+                results.map( (product,i) => (
+                    <CardLayout key={i} product={product} />
+                ))
+            }
+        </div>
+        )
+    }
+
+    const searchSubmit = (e) => {
+        e.preventDefault()
+        //Now we need to make a request to the backend to fetch the product---->Based on category
+        searchData()
+    }
+
+    const handleChange = name => (e) => {
+        setData({...data,[name] : e.target.value, searched:false})
+        //so we will used this searched,to determine if the user have already searched product or not
+        //if the user have search and we couldn't fetch any product form database...then we can show d msg-->Product not
     }
 
     const searchForm = () => (
@@ -57,7 +86,7 @@ const Search = () => {
                 </div>
 
                 <div className="btn input-group-append" style={{border:"none"}}>
-                <button type="button" class="btn btn-success">Search</button>
+                <button type="submit" class="btn btn-success">Search</button>
                 </div>   
 
             </span>
@@ -67,7 +96,13 @@ const Search = () => {
 
     return (
         <div className="row">
-            <div className="container">{searchForm()}</div>
+            <div className="container-fluid mb-2">
+                {searchForm()}
+            </div>
+
+            <div className="container-fluid mb-2">
+                {searchProducts(results)}
+            </div>
         </div>
     )
 }
