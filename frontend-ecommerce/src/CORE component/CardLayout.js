@@ -12,7 +12,7 @@ const CardLayout = ({product}) => {
                     <p>{product.description.substring(0,50)}</p>
                     <p>${product.price}</p>
                     </center>
-                    <Link to="/">
+                    <Link to={`/product/${product._id}` }>
                     <button type="button" className="btn btn-outline-primary mt-2 mb-2 mr-2">View Product</button>
                     </Link>
                     <button type="button" className="btn btn-outline-danger mt-2 mb-2">Add_To_Cart</button>
