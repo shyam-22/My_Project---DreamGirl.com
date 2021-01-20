@@ -2,7 +2,19 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import ShowImage from "./showImage"
 
-const CardLayout = ({product}) => {
+const CardLayout = ({product,showViewProductButton = true}) => {
+
+        const showViewButton = (showViewProductButton) => {
+            return (
+                showViewProductButton && 
+                (
+                    <Link to={`/product/${product._id}` }>
+                    <button type="button" className="btn btn-outline-primary mt-2 mb-2">View Product</button>
+                     </Link>
+                )
+            )
+        } 
+    
     return (
         <div className="col-3 mb-2">
             <div className="card">
@@ -12,10 +24,8 @@ const CardLayout = ({product}) => {
                     <p>{product.description.substring(0,50)}</p>
                     <p>${product.price}</p>
                     </center>
-                    <Link to={`/product/${product._id}` }>
-                    <button type="button" className="btn btn-outline-primary mt-2 mb-2 mr-2">View Product</button>
-                    </Link>
-                    <button type="button" className="btn btn-outline-danger mt-2 mb-2">Add_To_Cart</button>
+                    {showViewButton(showViewProductButton)}
+                    <button type="submit" className="btn btn-outline-warning  mt-2 mb-2 ml-2">Add_To_Cart</button>
 
                 </div>
             </div>

@@ -101,7 +101,7 @@ const Shop = () => {
         <Layout title="Shopping page" description="search and find books of your choice....!" className="container-fluid">
             <div className="row">
 
-                <div className="col-4">
+                <div className="col-3">
                     <h2>Category Filter</h2>
                     <ul>
                     <CheckBox_category categories={categories} handleFilter={filters => handleFilter(filters,"category")}/>    
@@ -113,7 +113,7 @@ const Shop = () => {
                     </ul>
                 </div>
 
-                <div className="col-8">
+                <div className="col-9">
                     <h2 className="mb-4">Product List</h2>
                         <div className="row">
                         {filterResults.map((product,i) => (

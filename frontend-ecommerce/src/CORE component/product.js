@@ -2,7 +2,7 @@
 
 import React,{useState,useEffect} from 'react'
 import Layout from "./Layout"
-import {getProducts} from "./apiCore"
+import {read} from "./apiCore"
 import CardLayout from "./CardLayout"
 
 const Product = (props) => {
@@ -10,7 +10,7 @@ const Product = (props) => {
     const  [error ,setError] = useState(false)
 
     const loadSingleProduct = (productId) => {
-        read().then(data => {
+        read(productId).then(data => {
             if(data.error){
                 console.log(data.error)
             }else{
@@ -25,11 +25,17 @@ const Product = (props) => {
     },[])
 
     return (
-        <Layout title="Add To cart page" description="Node React ECommerce Home page" className="container-fluid">
-               <h2 className="mb-2 mt-2">Single Product Fetch</h2>   
+        <Layout title={product && product.name} 
+                description={product && product.description} 
+                className="container-fluid">
+
                <div className="row">
-                    {JSON.stringify(product)}
+                   {
+                   product && product.description && <CardLayout product = {product} showViewProductButton={false}/>
+                   }
+                   
                 </div> 
+
         </Layout>
     )
 }

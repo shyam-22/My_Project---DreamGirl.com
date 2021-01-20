@@ -39,22 +39,24 @@ const Home = () => {
     return (
         <Layout title="Home page" description="Node React ECommerce Home page" className="container-fluid">
             <Search/>
+
                 <h2 className="mb-2">Best Seller</h2>
                 <div className="row">
                     {productBySell.map( (product,index) => (
                     <CardLayout key={index} product={product}/>
                     ))}
-                </div>
-               
-                <hr/>
-                <h2 className="mb-2">New Arrivals</h2>
+                </div>  
+
+                <h2 clnassName="mb-2">New Arrivals</h2>
                 <div className="row">
                     {productByArrival.map( (product,index) => (
                     <CardLayout key={index} product={product}/>
                     ))}
                 </div>
-             
-                   
+
+                <hr/>
+
+                       
         </Layout>
     )
 }
