@@ -53,4 +53,13 @@ export const getFilterProducts = (skip,limit,filters = {}) => {
             .catch(err => { return console.log(err) })  
         }
 
+        export const listRelated = (productId) => {
+            return fetch(`${API}/products/related/${productId}`,
+            {
+                method:"GET"
+            })
+            .then(response => { return response.json()})
+            .catch(err => { return console.log(err) })  
+        }
+
         

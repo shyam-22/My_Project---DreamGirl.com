@@ -59,6 +59,7 @@
 single product page - page name
 */
 
+/* It maybe better than one we had earlier */
 .name{
     background-color: indigo;
     color: white;
@@ -66,7 +67,7 @@ single product page - page name
 }
 
 /*
-black shadow for classname=10 to 1
+black shadow for className=10 to 1
 */
 
 .black-10{
