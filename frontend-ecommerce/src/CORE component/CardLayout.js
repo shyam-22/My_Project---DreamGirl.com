@@ -25,13 +25,13 @@ const CardLayout = ({product,showViewProductButton = true}) => {
         const showStock = (quantity) => {
             return (
                 quantity > 0 
-                ? <span className="badge badge-primary badge-pill badge-center">In Stock</span>
-                : <span className="badge badge-warning badge-pill">Out of Stock</span>
+                ? <center><span className="badge badge-primary badge-pill">In Stock</span></center> 
+                : <center><span className="badge badge-warning badge-pill">Out of Stock</span></center>
             )
         }
     
     return (
-        <div className="col-3 mb-2">
+        <div className="col-4 mb-2">
             <div className="card">
                 <div className="card-header text-center name">{product.name}</div>
                 <div className="card-body">
@@ -45,8 +45,12 @@ const CardLayout = ({product,showViewProductButton = true}) => {
                     </center>
                     {showStock(product.quantity)}
                     <br/>
+                    
+                    <center>
                     {showViewButton(showViewProductButton)}
                     {showAddToCardButton()}
+                    </center>
+                  
                    
                 </div>
             </div>

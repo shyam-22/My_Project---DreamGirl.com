@@ -41,18 +41,18 @@ const Product = (props) => {
                 className="container-fluid">
 
                <div className="row">
-                  <div className="col-8">
+                  <div className="col-7">
                     {
                         product && product.description && (
                         <CardLayout product = {product} showViewProductButton={false}/>
                     )}
                   </div>
 
-                  <div className="col-4">
-                  <h4>Related Product</h4>
+                  <div className="col-5 mb-2">
+                  <h4><center>Related Product</center></h4>
                     {
                     relatedProduct.map((p,i) => (
-                            <div className="mb-3">
+                            <div>
                              <CardLayout key={i} product={p} />
                             </div>
                         ))
