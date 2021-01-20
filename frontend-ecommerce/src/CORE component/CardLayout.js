@@ -45,9 +45,8 @@ const CardLayout = ({product,showViewProductButton = true}) => {
                     </center>
                     {showStock(product.quantity)}
                     <br/>
-                    
                     <center>
-                    {showViewButton(showViewProductButton)}
+                      {showViewButton(showViewProductButton)}
                     {showAddToCardButton()}
                     </center>
                   
