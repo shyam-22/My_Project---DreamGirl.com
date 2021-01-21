@@ -22,7 +22,7 @@ export const addItem = (item,next) => {
         //new set () -this will removes the duplicates 
         cart = Array.from(new Set(cart.map( (p,i) => (p._id) ))).map(id => 
         {
-            return cart.find(p._id === id)
+            return cart.find(p => p._id === id)
         })
         localStorage.setItem("cart", JSON.stringify(cart))
         next()

@@ -1,9 +1,11 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+import React,{useState} from 'react'
+import {Link, Redirect} from "react-router-dom"
 import ShowImage from "./showImage"
 import moment from "moment"
+import {addItem} from "./Cart_Related"
 
 const CardLayout = ({product,showViewProductButton = true}) => {
+    const [redirect,setRedirect] = useState(false)
 
         const showViewButton = (showViewProductButton) => {
             return (
@@ -15,10 +17,23 @@ const CardLayout = ({product,showViewProductButton = true}) => {
                 )
             )
         }  
+        const addTocart = () => {
+            addItem(product, () => {
+                setRedirect(true)
+            })
+        } 
+        
+        const shouldRedirect = redirect => {
+            if(redirect){
+                return <Redirect to="/cart"/>
+            }
+        }
 
         const showAddToCardButton = () => {
             return (
-                <button type="submit" className="btn btn-outline-warning  mt-2 mb-2 ml-2">Add_To_Cart</button>
+                <button type="submit" className="btn btn-outline-warning  mt-2 mb-2 ml-2" 
+                    onClick={addTocart}
+                >Add_To_Cart</button>
             )
         }
 
@@ -35,6 +50,7 @@ const CardLayout = ({product,showViewProductButton = true}) => {
             <div className="card">
                 <div className="card-header text-center name">{product.name}</div>
                 <div className="card-body">
+                    {shouldRedirect(redirect)}
                     <center><ShowImage product={product} url={"product"}/>
                     <p className="lead mt-2">{product.description.substring(0,50)}</p>
                     <p className="black-10">${product.price}</p>
