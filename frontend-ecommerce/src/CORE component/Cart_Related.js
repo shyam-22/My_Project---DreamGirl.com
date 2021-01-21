@@ -38,3 +38,15 @@ export const totalItems = () => {
     }
     return 0;
 }
+
+//-------------------------------------------------------------------------------------------------------------------
+// #3. fetch data from local storage to show in component
+export const getToCart = () => {
+    if(typeof window !== "undefined" ){
+        if(localStorage.getItem("cart")){
+            return JSON.parse(localStorage.getItem("cart"))
+        }
+    }
+    return [];
+}
+
