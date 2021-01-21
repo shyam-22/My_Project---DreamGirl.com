@@ -25,14 +25,6 @@ const Menu = (props) => {
                     <Link className="nav-link" style={isActive(props.history,"/shop")} to="/shop">Shop</Link>
                 </li>
 
-                <li className="nav-item">
-                    <Link className="nav-link" style={isActive(props.history,"/cart")} to="/cart">
-                    <span className="material-icons">
-                        add_shopping_cart <sup><big className="cart-badge">{totalItems()}</big></sup>
-                    </span>
-                    </Link>
-                </li>
-
                 {
                     isAuthenticated() && isAuthenticated().user.role === 0 && (
                     <li className="nav-item">
@@ -76,12 +68,16 @@ const Menu = (props) => {
                 </li>
                     </Fragment>
                 )}
-
-               
-
-                {/* <li className="nav-item">
-                    <Link className="nav-link" to="/">Home</Link>
-                </li> */}
+                <li className="nav-item float-right">
+                    <Link className="nav-link" style={isActive(props.history,"/cart")} to="/cart">
+                    <span className="material-icons">
+                        shopping_cart
+                    </span>
+                    <sup style={{verticalAlign:"super",color:"white",backgroundColor:"red", padding:"5px",borderRadius:"12px"}}>
+                        {totalItems()}
+                    </sup>
+                    </Link>
+                </li>
             </ul>
         </div>
     )
