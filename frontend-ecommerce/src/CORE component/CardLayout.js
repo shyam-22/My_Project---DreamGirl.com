@@ -4,7 +4,7 @@ import ShowImage from "./showImage"
 import moment from "moment"
 import {addItem} from "./Cart_Related"
 
-const CardLayout = ({product,showViewProductButton = true}) => {
+const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=true}) => {
     const [redirect,setRedirect] = useState(false)
 
         const showViewButton = (showViewProductButton) => {
@@ -17,7 +17,7 @@ const CardLayout = ({product,showViewProductButton = true}) => {
                 )
             )
         }  
-        const addTocart = () => {
+        const addToCart = () => {
             addItem(product, () => {
                 setRedirect(true)
             })
@@ -29,11 +29,12 @@ const CardLayout = ({product,showViewProductButton = true}) => {
             }
         }
 
-        const showAddToCardButton = () => {
-            return (
+        const showAddToCart = (showAddToCartButton) => {
+            return showAddToCartButton && (
                 <button type="submit" className="btn btn-outline-warning  mt-2 mb-2 ml-2" 
-                    onClick={addTocart}
-                >Add_To_Cart</button>
+                    onClick={addToCart}
+                >Add_To_Cart
+                </button>
             )
         }
 
@@ -63,7 +64,7 @@ const CardLayout = ({product,showViewProductButton = true}) => {
                     <br/>
                     <center>
                       {showViewButton(showViewProductButton)}
-                    {showAddToCardButton()}
+                    {showAddToCart(showAddToCartButton)}
                     </center>
                   
                    

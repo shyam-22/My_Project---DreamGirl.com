@@ -15,11 +15,11 @@ const Cart_component = () => {
     const showItemsList = items => {
         return (
             <div className="">
-                <h2>Your Cart Has {`$(items.length)`}</h2>
+                <h2>Your Cart Has {`${items.length}`} Items</h2>
                 <hr/>
                 {
                     items.map( (product,i) => (
-                        <CardLayout key={i} product={product}/>
+                        <CardLayout key={i} product={product} showAddToCartButton={false}/>
                     ))
                 }
             </div>
@@ -35,7 +35,16 @@ const Cart_component = () => {
 
     return (
         <Layout title="Shopping Cart" description="manage Your Cart Items....Add/Remove/Checkout or Continue Shopping" className="container-fluid">
-            {showItemsList(items)}
+            <div className="row">
+                <div className="col-6">
+                    {items.length > 0  ? showItemsList(items) : noItemMessage()}
+                </div>
+
+                <div className="col-6">
+                    <p>Show checkOut option/Shipping Address/total/update the quantity</p>
+                </div>
+            </div>
+            
         </Layout>
     )
     
