@@ -9,13 +9,14 @@ export const addItem = (item,next) => {
         if(localStorage.getItem("cart")){
             cart = JSON.parse(localStorage.getItem("cart"))//parse : to convert JSON to object
             //here we try to get the item from the local storage with the name of "Cart"
-            //populate all products fro this cart variable //stringify : to convert object to JSON
+            //populate all products from this cart variable //stringify : to convert object to JSON
         }
         cart.push({
             //to push new product 
             ...item,
             count : 1   //By default it is going to be always 1
         })
+//-------------------------------------------------------------------------------------------------------------------
         //If same product has been clicked twice or more than that....So for that -->we need to run a small function
         //so that we can use---> Our array.from() to create a new array that will make sure that there is no duplicate
         //Array.from () -this will give us a new array of products in d cart
@@ -26,4 +27,14 @@ export const addItem = (item,next) => {
         })
         localStorage.setItem("cart", JSON.stringify(cart))
         next()
+}
+//-------------------------------------------------------------------------------------------------------------------
+// #2. create a function --->Show total items in the cart
+export const totalItems = () => {
+    if(typeof window !== "undefined" ){
+        if(localStorage.getItem("cart")){
+            return JSON.parse(localStorage.getItem("cart")).length
+        }
+    }
+    return 0;
 }
