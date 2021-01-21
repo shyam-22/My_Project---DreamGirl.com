@@ -89,3 +89,21 @@ black shadow for className=10 to 1
 .black-6{
     background: #b3b3b3;
 }
+
+
+
+/*
+cart badge styling
+style={{verticalAlign:"super",color:"white",backgroundColor:"red", padding:"5px",borderRadius:"10px"}}
+*/
+
+.cart-badge, .cart-badge:hover
+{
+    vertical-align: super;
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+

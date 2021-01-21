@@ -67,17 +67,17 @@ const Menu = (props) => {
                     </span>
                 </li>
                     </Fragment>
-                )}
-                <li className="nav-item float-right">
+                )} 
+                 <li className="nav-item item-cart">
                     <Link className="nav-link" style={isActive(props.history,"/cart")} to="/cart">
-                    <span className="material-icons">
+                    <span className="material-icons" style={{color:"black"}}>
                         shopping_cart
                     </span>
-                    <sup style={{verticalAlign:"super",color:"white",backgroundColor:"red", padding:"5px",borderRadius:"12px"}}>
+                    <sup className="cart-badge">
                         {totalItems()}
                     </sup>
                     </Link>
-                </li>
+                </li>              
             </ul>
         </div>
     )
