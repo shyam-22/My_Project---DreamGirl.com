@@ -47,7 +47,6 @@ export const getToCart = () => {
             return JSON.parse(localStorage.getItem("cart"))
         }
     }
-    return [];
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -64,11 +63,10 @@ export const updateItem = (productId,count) => {
         })
         localStorage.setItem("cart", JSON.stringify(cart))
     }
-    return cart;
 }
 //-------------------------------------------------------------------------------------------------------------------
 // #5. remove the Item from cart 
-export const removeItem = (productId,count) => {
+export const removeItem = (productId) => {
     let cart = []
     if(typeof window !== "undefined"){
         if(localStorage.getItem("cart")){
@@ -76,7 +74,7 @@ export const removeItem = (productId,count) => {
         }
         cart.map( (product,i) => {
             if(product._id === productId)
-            cart.splice(cart[i], 1) //1 item will out from this index   
+            cart.splice(i, 1) //1 item will out from this index   
         })
         localStorage.setItem("cart", JSON.stringify(cart))
     }

@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import Layout from "./Layout"
-import {getProducts} from "./apiCore"
 import CardLayout from "./CardLayout"
 import {getToCart} from "./Cart_Related"
 import { Link } from 'react-router-dom'
@@ -11,11 +10,12 @@ const Cart_component = () => {
     useEffect(() => {
        setItems(getToCart()) 
     },[items])
+    //whenever there is a any changes in items(state).... 
 
     const showItemsList = items => {
         return (
             <div className="">
-                <h2>Your Cart Has {`${items.length}`} Items</h2>
+                <h2>Your Cart Has {`${items.length}`} Items </h2>
                 <hr/>
                 {
                     items.map( (product,i) => (
@@ -33,10 +33,12 @@ const Cart_component = () => {
     }
 
     const noItemMessage =() => {
-        <h2>Your cart is empty
-        <br/>
-        <Link to="/shop">Continue Shopping</Link>
-        </h2>
+        return (
+            <h2>Your cart is empty
+            <br/>
+            <Link to="/shop">Continue Shopping....</Link>
+            </h2>
+        )   
     }
 
     return (

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link, Redirect} from "react-router-dom"
 import ShowImage from "./showImage"
 import moment from "moment"
@@ -37,7 +37,7 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                 </button>
             )
         }
-        const handleChange = (productId) => e => {
+        const handleChange = productId => e => {
             setCount(e.target.value < 1 ? 1 : e.target.value)
             if(e.target.value >= 1){
                 updateItem(productId, e.target.value)
@@ -90,11 +90,11 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                     <br/>
                     <center>
                     {showViewButton(showViewProductButton)}
-                    
+                    {showCartUpdate(showCartUpdateButton)}
                     {showCartRemove(showRemoveButton)}
 
                     {showAddToCart(showAddToCartButton)}
-                    {showCartUpdate(showCartUpdateButton)}
+                    
                     </center>
                   
                    
