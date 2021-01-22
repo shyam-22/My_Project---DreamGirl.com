@@ -19,7 +19,8 @@ const Cart_component = () => {
                 <hr/>
                 {
                     items.map( (product,i) => (
-                        <CardLayout key={i} product={product} showAddToCartButton={false}/>
+                        <CardLayout 
+                        key={i} product={product} showAddToCartButton={false} showCartUpdateButton={true}/>
                     ))
                 }
             </div>

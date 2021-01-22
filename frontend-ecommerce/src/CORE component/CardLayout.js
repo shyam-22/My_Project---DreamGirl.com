@@ -4,19 +4,18 @@ import ShowImage from "./showImage"
 import moment from "moment"
 import {addItem} from "./Cart_Related"
 
-const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=true}) => {
+const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=true},showCartUpdateButton = false) => {
     const [redirect,setRedirect] = useState(false)
+    const [count,setCount] = useState(product.count)
 
         const showViewButton = (showViewProductButton) => {
-            return (
-                showViewProductButton && 
-                (
+            return showViewProductButton &&  (
                     <Link to={`/product/${product._id}` }>
                     <button type="button" className="btn btn-outline-primary mt-2 mb-2">View Product</button>
                      </Link>
                 )
-            )
         }  
+
         const addToCart = () => {
             addItem(product, () => {
                 setRedirect(true)
@@ -35,6 +34,25 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                     onClick={addToCart}
                 >Add_To_Cart
                 </button>
+            )
+        }
+
+        const handleChange = (productId) => e => {
+            setCount(e.target.value < 1 ? 1 : e.target.value)
+            if(e.target.value >= 1){
+                updateItem(productId, e.target.value)
+            }
+        }
+
+        const showCartUpdate = (showCartUpdateButton) => {
+            return showCartUpdateButton && (
+                <div className="input-group mb-3">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text">Quantity Adjust</span>
+                    </div>
+                    <input type="number" className="form-control" 
+                           value={count} onChange={handleChange(product._id)} />
+                </div>
             )
         }
 
@@ -63,8 +81,9 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                     {showStock(product.quantity)}
                     <br/>
                     <center>
-                      {showViewButton(showViewProductButton)}
+                    {showViewButton(showViewProductButton)}
                     {showAddToCart(showAddToCartButton)}
+                    {showCartUpdate(showAddToCartButton)}
                     </center>
                   
                    
