@@ -90,9 +90,11 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                     <br/>
                     <center>
                     {showViewButton(showViewProductButton)}
+                    
+                    {showCartRemove(showRemoveButton)}
+
                     {showAddToCart(showAddToCartButton)}
                     {showCartUpdate(showCartUpdateButton)}
-                    {showCartRemove(showRemoveButton)}
                     </center>
                   
                    

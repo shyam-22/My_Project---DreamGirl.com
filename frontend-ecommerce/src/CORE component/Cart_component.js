@@ -10,7 +10,7 @@ const Cart_component = () => {
 
     useEffect(() => {
        setItems(getToCart()) 
-    },[])
+    },[items])
 
     const showItemsList = items => {
         return (
@@ -23,8 +23,8 @@ const Cart_component = () => {
                         key={i} 
                         product={product} 
                         showAddToCartButton={false} 
+                        showRemoveButton={true}
                         showCartUpdateButton={true}
-                        showRemoveButton={trur}
                         />
                     ))
                 }
