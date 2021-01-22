@@ -73,8 +73,7 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
         }
     
     return (
-        <div className="col-4 mb-2">
-            <div className="card">
+                <div className="card">
                 <div className="card-header text-center name">{product.name}</div>
                 <div className="card-body">
                     {shouldRedirect(redirect)}
@@ -89,10 +88,11 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                     {showStock(product.quantity)}
                     <br/>
                     <center>
-                    {showViewButton(showViewProductButton)}
                     {showCartUpdate(showCartUpdateButton)}
-                    {showCartRemove(showRemoveButton)}
 
+                    {showViewButton(showViewProductButton)}
+                    {showCartRemove(showRemoveButton)}
+                   
                     {showAddToCart(showAddToCartButton)}
                     
                     </center>
@@ -100,7 +100,6 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                    
                 </div>
             </div>
-        </div>
     )
 }
 

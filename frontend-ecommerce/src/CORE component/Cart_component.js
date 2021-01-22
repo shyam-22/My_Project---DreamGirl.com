@@ -9,7 +9,7 @@ const Cart_component = () => {
 
     useEffect(() => {
        setItems(getToCart()) 
-    },[items])
+    },[{...items}])
     //whenever there is a any changes in items(state).... 
 
     const showItemsList = items => {
