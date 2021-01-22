@@ -20,7 +20,12 @@ const Cart_component = () => {
                 {
                     items.map( (product,i) => (
                         <CardLayout 
-                        key={i} product={product} showAddToCartButton={false} showCartUpdateButton={true}/>
+                        key={i} 
+                        product={product} 
+                        showAddToCartButton={false} 
+                        showCartUpdateButton={true}
+                        showRemoveButton={trur}
+                        />
                     ))
                 }
             </div>

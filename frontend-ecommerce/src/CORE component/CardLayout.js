@@ -2,9 +2,10 @@ import React,{useState} from 'react'
 import {Link, Redirect} from "react-router-dom"
 import ShowImage from "./showImage"
 import moment from "moment"
-import {addItem} from "./Cart_Related"
+import {addItem,updateItem,removeItem} from "./Cart_Related"
 
-const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=true},showCartUpdateButton = false) => {
+const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=true,
+    showCartUpdateButton=false , showRemoveButton=false }) => {
     const [redirect,setRedirect] = useState(false)
     const [count,setCount] = useState(product.count)
 
@@ -36,7 +37,6 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                 </button>
             )
         }
-
         const handleChange = (productId) => e => {
             setCount(e.target.value < 1 ? 1 : e.target.value)
             if(e.target.value >= 1){
@@ -53,6 +53,14 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                     <input type="number" className="form-control" 
                            value={count} onChange={handleChange(product._id)} />
                 </div>
+            )
+        }
+        const showCartRemove = (showRemoveButton) => {
+            return showRemoveButton && (
+                <button type="submit" className="btn btn-outline-danger  mt-2 mb-2 ml-2" 
+                    onClick={() => removeItem(product._id)}
+                >Remove Product
+                </button>
             )
         }
 
@@ -83,7 +91,8 @@ const CardLayout = ({product,showViewProductButton = true,showAddToCartButton=tr
                     <center>
                     {showViewButton(showViewProductButton)}
                     {showAddToCart(showAddToCartButton)}
-                    {showCartUpdate(showAddToCartButton)}
+                    {showCartUpdate(showCartUpdateButton)}
+                    {showCartRemove(showRemoveButton)}
                     </center>
                   
                    

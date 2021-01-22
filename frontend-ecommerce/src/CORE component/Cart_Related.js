@@ -50,3 +50,36 @@ export const getToCart = () => {
     return [];
 }
 
+//-------------------------------------------------------------------------------------------------------------------
+// #4. Update the cart Item and show in Add to cart final  component
+export const updateItem = (productId,count) => {
+    let cart = []
+    if(typeof window !== "undefined"){
+        if(localStorage.getItem("cart")){
+            cart = JSON.parse(localStorage.getItem("cart"))
+        }
+        cart.map( (product,i) => {
+            if(product._id === productId)
+            cart[i].count = count
+        })
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }
+    return cart;
+}
+//-------------------------------------------------------------------------------------------------------------------
+// #5. remove the Item from cart 
+export const removeItem = (productId,count) => {
+    let cart = []
+    if(typeof window !== "undefined"){
+        if(localStorage.getItem("cart")){
+            cart = JSON.parse(localStorage.getItem("cart"))
+        }
+        cart.map( (product,i) => {
+            if(product._id === productId)
+            cart.splice(cart[i], 1) //1 item will out from this index   
+        })
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }
+    return cart;
+}
+
