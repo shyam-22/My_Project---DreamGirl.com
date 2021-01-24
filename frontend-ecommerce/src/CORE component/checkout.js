@@ -1,9 +1,12 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import Layout from "./Layout"
+import {getProducts} from "./apiCore"
+import CardLayout from "./CardLayout"
 
-const checkout = () => {
+const Checkout = ({products}) => {
     return (
-        <h2></h2>
+        <h2>{JSON.stringify(products)}</h2>
     )
 }
 
-export default checkout
+export default Checkout

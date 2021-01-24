@@ -3,6 +3,8 @@ import Layout from "./Layout"
 import CardLayout from "./CardLayout"
 import {getToCart} from "./Cart_Related"
 import { Link } from 'react-router-dom'
+import Checkout from "./checkout"
+
 
 const Cart_component = () => {
     const [items,setItems] = useState([])
@@ -49,7 +51,9 @@ const Cart_component = () => {
                 </div>
 
                 <div className="col-6">
-                    <p>Show checkOut option/Shipping Address/total/update the quantity</p>
+                    <h2 className="mb-4">Your cart Summary</h2>
+                    <hr/>
+                    <Checkout products={items}/>
                 </div>
             </div>
             
