@@ -1,0 +1,37 @@
+Finally we arrived to a point ....where we are going to implement payment gateway
+
+And this is ine of the most important feature of any e-commerce application
+
+I want best payment processing option available out there in market 
+
+we have couple of option such as---> stripe, paper or braintree 
+
+Braintree --> The best thing about Braintree supports paypal which is one of the most importantpart of yoyr E-com app
+
+
+//If you have only credit card/debit card option ,,then you will loss lots of users 
+  --->because of most of the user they want to use paypal
+
+//Its not going to super complicated but,,,
+//you can have take steps slowly---> if you  new to It
+
+
+//i will see you in the next lecture
+
+//Braintree setup frontend
+
+#1. First we need to go---> Braintree.sandbox --->GO to ---> API
+#2. Second we need to generate new API KEY......Delete old one
+#3. third copy the ....Merchant ID, Merchant public Key, Merchant private key 
+#4. fourth paste all credentials in backend---> .env file
+#5. install Brintree package in tour node js project
+#6. so now first thing we will be doing---> we will be generating a Token
+        ----> we will create a route we can call----> braintree/getToken
+
+
+//Braintree setup Backend
+# Install Braintree in our node js....so that we can generate the token
+ #1. generate the toke and give to the frontend
+ #2. Go to backend --> Routes folder --> create new file as ->Braintree.js
+ #3. so here we will have all the routes related to the braintree payment processing
+ #4.
