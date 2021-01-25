@@ -11,10 +11,11 @@ const Cart_component = () => {
 
     useEffect(() => {
        setItems(getToCart()) 
-    },[{...items}])
+    },[items])
+
     //whenever there is a any changes in items(state).... 
 
-    const showItemsList = items => {
+    const showItemsList = (items) => {
         return (
             <div className="">
                 <h2>Your Cart Has {`${items.length}`} Items </h2>
@@ -63,4 +64,4 @@ const Cart_component = () => {
 
 }
 
-export default Cart_component
+export default Cart_component;
