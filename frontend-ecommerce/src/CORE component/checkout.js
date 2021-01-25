@@ -23,6 +23,7 @@ const Checkout = ({products}) => {
                    </Link>)
             
         )
+    }
 
     return (
         <div>
