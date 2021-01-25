@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import Layout from "./Layout"
 import {getProducts} from "./apiCore"
 import CardLayout from "./CardLayout"
+import {isAuthenticated} from "../Auth/api_signUp"
+import { Link } from 'react-router-dom'
 
 const Checkout = ({products}) => {
 
@@ -12,8 +14,21 @@ const Checkout = ({products}) => {
         },0)
     }
 
+    const showCheckOut = () => {
+        return (
+            isAuthenticated() 
+                ? (<button type="button" className="btn btn-success">Checkout</button>) 
+                : (<Link to="/signin">
+                        <button type="button" className="btn btn-primary"> Sign In to checkout</button>
+                   </Link>)
+            
+        )
+
     return (
+        <div>
         <h2>Total : ${getTotal()}</h2>
+            {showCheckOut()} 
+        </div>
     )
 }
 
