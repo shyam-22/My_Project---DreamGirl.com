@@ -13,6 +13,7 @@ const authRoutes = require("./.Routes/auth");
 const userRoutes = require("./.Routes/user");
 const categoryRoutes = require("./.Routes/category");
 const productRoutes = require("./.Routes/product");
+const braintreeRoutes = require("./.Routes/Braintree")
 
 
 //app connection with express 
