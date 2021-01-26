@@ -38,6 +38,8 @@ app.use("/api",authRoutes)
 app.use("/api",userRoutes)
 app.use("/api",categoryRoutes)
 app.use("/api",productRoutes)
+app.use("/api",braintreeRoutes)
+
 
 //Port connection
 const port = process.env.PORT || 8000

@@ -3,7 +3,7 @@ const router = express.router();
 
 const {requireSignin,isAuth} = require("../.CONTROLLERS/auth")
 const {userById } = require("../.CONTROLLERS/user") ;
-
+const {generateToken} = require("../.CONTROLLERS/Braintree")
 
 router.get("/braintree/getToken/:userId", requireSignin,isAuth, generateToken )
 
