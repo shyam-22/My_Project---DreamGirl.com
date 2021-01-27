@@ -1,6 +1,6 @@
 const User = require("../.MODULE-Schema/userSchema")
 
-const braintree = require(braintree)
+const braintree = require("braintree")
 require("dotenv").config()   //so that we can use the environmemtal variables
 
 //Before generate the token ....we need to connect to brian tree
